@@ -23,6 +23,10 @@ public abstract class Person {
         return this.isFarmer;
     }
 
+    public boolean equals(String name) {
+        return this.name == name;
+    }
+
     public void setOccupation(boolean occupation) {
         this.isFarmer = occupation;
     }
