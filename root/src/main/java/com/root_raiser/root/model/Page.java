@@ -3,50 +3,67 @@ package com.root_raiser.root.model;
 import java.util.List;
 
 public class Page {
-
-    private String title;
-    private String summary;
-    private List<String> labels;
+    private String productName;
+    private int userId;
+    private int productId;
+    private float price;
+    private float weight;
     private String attachments;
 
-
-    public Page(String title, String summary, List<String> labels, String attachments) {
-        this.title = title;
-        this.summary = summary;
-        this.labels = labels;
+    public Page(String productName, int userId, int productId, float price, float weight, String attachments) {
+        this.productName = productName;
+        this.userId = userId;
+        this.productId = productId;
+        this.price = price;
+        this.weight = weight;
         this.attachments = attachments;
     }
 
-    public String getTitle() {
-        return title;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getSummary() {
-        return summary;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public List<String> getLabels() {
-        return labels;
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public String getAttachments() {
         return attachments;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
-
     public void setAttachments(String attachments) {
         this.attachments = attachments;
     }
 }
-
