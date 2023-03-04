@@ -18,9 +18,9 @@ public class PageController {
     private PageRepository repo;
 
     @GetMapping("/page")
-    public List<Page> getAllPages(Model model){
+    public List<Page> getAllPages(){
         List<Page> listPages = repo.findAll();
-        model.addAttribute("listPages", listPages);
+        //model.addAttribute("listPages", listPages);
         return listPages;
     }
 

@@ -1,16 +1,17 @@
 package com.root_raiser.root.controllers;
 
+import com.root_raiser.root.Repository.FarmerRepsitory;
 import com.root_raiser.root.model.Farmer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
-@RestController
+@Controller
 public class FarmerController {
+    @Autowired
+    private FarmerRepsitory repo;
 
     private final List<Farmer> farmerList;
 
@@ -19,25 +20,28 @@ public class FarmerController {
     }
 
     @PostMapping("/farmer")
-    public boolean newFarmer(@RequestBody Farmer newFarmer) {
-        return farmerList.add(newFarmer);
+    public Farmer newFarmer(@RequestBody Farmer newFarmer) {
+        return repo.save(newFarmer);
     }
 
     @GetMapping("/farmer")
     public List<Farmer> getAllPersons(){
-        return farmerList;
+        List<Farmer> listFarmer = repo.findAll();
+        return listFarmer;
     }
 
     // Single item
-    @GetMapping("/farmer/{name}")
-    @ResponseBody
-    public Farmer getFarmer(@PathVariable String name) {
-        return farmerList.stream().filter(x -> x.equals(name)).collect(Collectors.toList()).get(0);
+    @GetMapping("/farmer/{id}")
+    public Optional<Farmer> getFarmer(@PathVariable String id) {
+        int farmerId = Integer.parseInt(id);
+        return repo.findById(farmerId);
 
     }
 
-    @DeleteMapping("/farmer/{name}")
-    public void deleteFarmer(@PathVariable String name) {
-        farmerList.removeIf(x -> x.equals(name));
+    @DeleteMapping("/farmer/{id}")
+    public boolean deleteFarmer(@PathVariable String id) {
+        int farmerId = Integer.parseInt(id);
+        repo.deleteById(farmerId);
+        return true;
     }
 }
