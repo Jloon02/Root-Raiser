@@ -1,15 +1,28 @@
 package com.root_raiser.root.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
+@Entity
 public class Page {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int pageId;
+
     private String productName;
     private int productRemaining;
     private int userId;
     private int productId;
     private float price;
     private String attachments;
+
+    public Page() {
+
+    }
 
     public Page(int id, String productName, int productNum, int userId, int productId, float price, String attachments) {
         this.pageId = id;
