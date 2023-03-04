@@ -1,7 +1,5 @@
 package com.root_raiser.root.controllers;
 
-import com.root_raiser.root.model.Person;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

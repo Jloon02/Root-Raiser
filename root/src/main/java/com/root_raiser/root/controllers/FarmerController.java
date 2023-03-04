@@ -1,4 +1,4 @@
-package com.root_raiser.root;
+package com.root_raiser.root.controllers;
 
 import com.root_raiser.root.model.Farmer;
 import org.springframework.web.bind.annotation.*;
@@ -19,20 +19,25 @@ public class FarmerController {
     }
 
     @PostMapping("/farmer")
-    boolean newFarmer(@RequestBody Farmer newFarmer) {
+    public boolean newFarmer(@RequestBody Farmer newFarmer) {
         return farmerList.add(newFarmer);
+    }
+
+    @GetMapping("/farmer")
+    public List<Farmer> getAllPersons(){
+        return farmerList;
     }
 
     // Single item
     @GetMapping("/farmer/{name}")
     @ResponseBody
-    List<Farmer> getFarmer(@RequestParam String name) {
-        return farmerList.stream().filter(x -> x.equals(name)).collect(Collectors.toList());
+    public Farmer getFarmer(@PathVariable String name) {
+        return farmerList.stream().filter(x -> x.equals(name)).collect(Collectors.toList()).get(0);
 
     }
 
     @DeleteMapping("/farmer/{name}")
-    void deleteFarmer(@PathVariable String name) {
+    public void deleteFarmer(@PathVariable String name) {
         farmerList.removeIf(x -> x.equals(name));
     }
 }

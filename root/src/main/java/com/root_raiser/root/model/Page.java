@@ -3,20 +3,30 @@ package com.root_raiser.root.model;
 import java.util.List;
 
 public class Page {
+    private int pageId;
     private String productName;
+    private int productRemaining;
     private int userId;
     private int productId;
     private float price;
-    private float weight;
     private String attachments;
 
-    public Page(String productName, int userId, int productId, float price, float weight, String attachments) {
+    public Page(int id, String productName, int productNum, int userId, int productId, float price, String attachments) {
+        this.pageId = id;
         this.productName = productName;
+        this.productRemaining = productNum;
         this.userId = userId;
         this.productId = productId;
         this.price = price;
-        this.weight = weight;
         this.attachments = attachments;
+    }
+
+    public int getPageId() {
+        return this.pageId;
+    }
+
+    public void setPageId(int id) {
+        this.pageId = id;
     }
 
     public String getProductName() {
@@ -25,6 +35,18 @@ public class Page {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public int getProductRemaining() {
+        return productRemaining;
+    }
+
+    public void decreProductRemaining() {
+        this.productRemaining--;
+    }
+
+    public void increProduct() {
+        this.productRemaining++;
     }
 
     public int getUserId() {
@@ -49,14 +71,6 @@ public class Page {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
     }
 
     public String getAttachments() {
