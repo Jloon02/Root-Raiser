@@ -30,7 +30,7 @@ public class PageController {
         return repo.findById(pageId);
     }
 
-    @PostMapping("/page/newpage")
+    @PostMapping("/page")
     public Page create(@RequestBody Map<String, String> body){
         String pageId = body.get("pageId");
         String productName = body.get("productName");
@@ -39,7 +39,8 @@ public class PageController {
         String productId = body.get("productId");
         String price = body.get("price");
         String attachments = body.get("attachments");
-        return repo.save(new Page(Integer.parseInt(pageId), productName, Integer.parseInt(productRemaining), Integer.parseInt(userId), Integer.parseInt(productId),Integer.parseInt(price),attachments));
+        return repo.save(new Page(Integer.parseInt(pageId), productName, Integer.parseInt(productRemaining),
+                Integer.parseInt(userId), Integer.parseInt(productId),Integer.parseInt(price),attachments));
     }
 
     @DeleteMapping("/page/{id}")

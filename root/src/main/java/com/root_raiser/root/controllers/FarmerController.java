@@ -13,12 +13,6 @@ public class FarmerController {
     @Autowired
     private FarmerRepsitory repo;
 
-    private final List<Farmer> farmerList;
-
-    FarmerController(List<Farmer> farmer) {
-        this.farmerList = farmer;
-    }
-
     @PostMapping("/farmer")
     public Farmer newFarmer(@RequestBody Farmer newFarmer) {
         return repo.save(newFarmer);
